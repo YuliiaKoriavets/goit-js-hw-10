@@ -12,9 +12,13 @@ const countryListEl = document.querySelector('.country-list');
 const oneCountryInfoEl = document.querySelector('.country-info');
 
 const handleSearchCountry = event => {
-  const searchQuery = event.target.value.trim();
+  let searchQuery = event.target.value.trim();
   countryListEl.innerHTML = '';
   oneCountryInfoEl.innerHTML = '';
+
+  if (searchQuery === "") {
+    return
+  }
 
   fetchCountries(searchQuery)
     .then(data => {
